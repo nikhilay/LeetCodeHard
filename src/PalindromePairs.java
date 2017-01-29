@@ -20,14 +20,21 @@ import java.util.List;
  * Return [[0, 1], [1, 0], [3, 2], [2, 4]]
  * The palindromes are ["dcbaabcd", "abcddcba", "slls", "llssssll"]
  */
+
+/**
+ * Inspired from
+ * https://discuss.leetcode.com/topic/41477/the-easy-to-unserstand-java-solution/2
+ */
 public class PalindromePairs {
     public List<List<Integer>> palindromePairs(String[] words) {
         List<List<Integer>> res = new LinkedList<>();
         if (words == null || words.length == 0) return res;
+        //build the map save the key-val pairs: String - idx
         HashMap<String, Integer> map = new HashMap<>();
         for (int i = 0; i < words.length; i++) {
             map.put(words[i], i);
         }
+        //special cases: "" can be combine with any palindrome string
         if (map.containsKey("")) {
             for (int i = 0; i < words.length; i++) {
                 if (words[i].equals("")) continue;
@@ -37,7 +44,7 @@ public class PalindromePairs {
                 }
             }
         }
-
+        //find all string and reverse string pairs
         for (int i = 0; i < words.length; i++) {
             String revWord = reverse(words[i]);
             if (map.containsKey(revWord) && map.get(revWord) != i) {
@@ -45,6 +52,9 @@ public class PalindromePairs {
             }
 
         }
+        //find the pair s1, s2 that
+        //case1 : s1[0:cut] is palindrome and s1[cut+1:] = reverse(s2) => (s2, s1)
+        //case2 : s1[cut+1:] is palindrome and s1[0:cut] = reverse(s2) => (s1, s2)
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
             for (int cut = 1; cut < word.length(); cut++) {
