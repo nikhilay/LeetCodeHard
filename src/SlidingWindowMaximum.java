@@ -9,9 +9,6 @@
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-
-import static com.sun.tools.javac.jvm.ByteCodes.ret;
-
 /**
  * Inspired from
  * https://discuss.leetcode.com/topic/19055/java-o-n-solution-using-deque-with-explanation/2

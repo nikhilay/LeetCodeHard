@@ -25,9 +25,11 @@ public class MaximumGap {
         Arrays.fill(maxArr, Integer.MIN_VALUE);
         int gap = (int) Math.ceil((double)(max - min) / (nums.length - 1));
         //puttting values in bucket
+        System.out.println("min "+min+" max "+max+"  gap"+gap);
         for (int i : nums) {
             if (i == max || i == min) continue;
             int index = (i - min) / gap;
+            System.out.println(i+"  "+index);
             minArr[index] = Math.min(minArr[index], i);
             maxArr[index] = Math.max(maxArr[index], i);
         }
