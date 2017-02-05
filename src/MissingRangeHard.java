@@ -8,14 +8,6 @@ import java.util.*;
  * Extension of Missing ranges with negatives and duplicates and unsorted
  */
 public class MissingRangeHard {
-    public static void main(String[] args) {
-        int[] input = {5};
-        List<String> list = giveMissingRange(input);
-        for (String s : list) {
-            System.out.println(s);
-        }
-    }
-
     public static List<String> giveMissingRange(int[] input) {
         List<String> list = new LinkedList<>();
         if (input == null) return list;
